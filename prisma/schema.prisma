@@ -31,8 +31,8 @@ model User {
 model Post {
   id        Int @id @default(autoincrement())
   title     String
-  content   String
-  subtitle  String
+  subtitle  String?
+  body      String  
   userId    Int @map("user_id")
   user User @relation(fields: [userId], references: [id])
 
