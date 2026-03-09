@@ -2,7 +2,8 @@ import { Router } from 'express';
 import { createUser, 
          createUsers, 
         getAllUsers, 
-        getUserByEmail
+        getUserByEmail,
+        getUserByFields
 } from '../service/user';
 
 export const mainRouter = Router();
@@ -55,4 +56,13 @@ mainRouter.get('/user', async (req, res) => {
     } else {
         res.status(404).json({ error: 'User not found' });
     }
-})
+});
+
+mainRouter.get('/user2', async (req, res) => {
+    const user = await getUserByFields()
+    if (user) {
+        res.json({ user });
+    } else {
+        res.status(404).json({ error: 'User not found' });
+    }
+});
